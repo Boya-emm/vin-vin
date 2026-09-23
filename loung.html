@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Girl 🥺</title>
+    <style>
+        /* កំណត់រចនាប័ទ្មទូទៅ */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Khmer OS Battambang', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffe6eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(234, 84, 85, 0.15);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            color: #d63031;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* ប៊ូតុង */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            font-weight: bold;
+        }
+
+        .btn-angry {
+            background-color: #ff7675;
+            color: white;
+        }
+
+        .btn-angry:hover {
+            background-color: #e17055;
+            transform: scale(1.05);
+        }
+
+        .btn-not-angry {
+            background-color: #00b894;
+            color: white;
+        }
+
+        .btn-not-angry:hover {
+            background-color: #009432;
+            transform: scale(1.05);
+        }
+
+        /* អេក្រង់ខឹង */
+        .screen {
+            display: none;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        .back-btn {
+            background: none;
+            color: #636e72;
+            font-size: 1.5rem;
+            padding: 5px 10px;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            cursor: pointer;
+        }
+        
+        .back-btn:hover {
+            color: #2d3436;
+            transform: scale(1.1);
+        }
+
+        .angry-box {
+            position: relative;
+            padding-top: 20px;
+        }
+
+        /* អេក្រង់មិនខឹង និងស៊ុមរូបថត */
+        .photo-frames {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .frame {
+            width: 100px;
+            height: 120px;
+            background-color: #fff;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: rotate(-3deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #b2bec3;
+            overflow: hidden;
+            border-bottom: 20px solid #fff; /* បែបបទទម្រង់រូបថត Polaroid */
+        }
+
+        .frame:nth-child(2) {
+            transform: rotate(4deg);
+        }
+
+        .frame:nth-child(3) {
+            transform: rotate(-2deg);
+        }
+
+        /* ចលនាបេះដូងធ្លាក់ */
+        .heart {
+            position: absolute;
+            color: #ff7675;
+            font-size: 20px;
+            animation: fall linear infinite;
+            z-index: 1;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- អេក្រង់ដំបូង -->
+    <div id="initialScreen" class="container screen active">
+        <h1>vin អូនអែងខឹងបងហើយមែនហាស អូនតឿៗ? 🥺</h1>
+        <div class="btn-group">
+            <button class="btn-angry" onclick="showAngryScreen()">ខឹង</button>
+            <button class="btn-not-angry" onclick="showHappyScreen()">មិនខឹង</button>
+        </div>
+    </div>
+
+    <!-- អេក្រង់នៅពេលចុច "ខឹង" -->
+    <div id="angryScreen" class="container screen angry-box">
+        <button class="back-btn" onclick="showInitialScreen()">&lt;</button>
+        <h1>o eng kom kng b ban ort vin vin b ort dg men has tha b khos ey ber b khos ey o eng aj brb aj vaii je theak b ban has kter kom sngat sngat bat ort rp jg yorr b phaii has nah my ss krov khor bos b </h1>
+    </div>
+
+    <!-- អេក្រង់នៅពេលចុច "មិនខឹង" -->
+    <div id="happyScreen" class="container screen">
+        <h1>huus ort kng leor hz b khom phaii nis mer pic yg kal nv pi toch tv ahna kot yg kon yg muk doch b hz o eng jg has kter kter  🥰❤️</h1>
+        
+        <!-- កន្លែងសម្រាប់ដាក់រូបថត ២ ទៅ ៣ សន្លឹក -->
+        <div class="photo-frames">
+            <div class="frame"><img src="pic1.jpg" alt="photo 1" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="frame"><img src="pic2.jpg" alt="photo 2" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <div class="frame"><img src="pic3.jpg" alt="photo 3" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        </div>
+    </div>
+
+    <script>
+        const initialScreen = document.getElementById('initialScreen');
+        const angryScreen = document.getElementById('angryScreen');
+        const happyScreen = document.getElementById('happyScreen');
+        let heartInterval;
+
+        function showAngryScreen() {
+            initialScreen.classList.remove('active');
+            angryScreen.classList.add('active');
+            happyScreen.classList.remove('active');
+            stopHearts();
+        }
+
+        function showInitialScreen() {
+            angryScreen.classList.remove('active');
+            initialScreen.classList.add('active');
+            happyScreen.classList.remove('active');
+            stopHearts();
+        }
+
+        function showHappyScreen() {
+            initialScreen.classList.remove('active');
+            angryScreen.classList.remove('active');
+            happyScreen.classList.add('active');
+            
+            // ផ្លាស់ប្តូរពណ៌ Background ឱ្យកាន់តែរ៉ូមែនទិក
+            document.body.style.backgroundColor = "#ffccd5";
+            startHearts();
+        }
+
+        // មុខងារបង្កើតចលនាបេះដូងធ្លាក់
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's'; // ចន្លោះពី ២ ទៅ ៥ វិនាទី
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px'; // ទំហំខុសៗគ្នា
+            
+            document.body.appendChild(heart);
+
+            // លុបបេះដូងចោលក្រោយពេលធ្លាក់ផុតអេក្រង់
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        function startHearts() {
+            if(!heartInterval) {
+                heartInterval = setInterval(createHeart, 300);
+            }
+        }
+
+        function stopHearts() {
+            clearInterval(heartInterval);
+            heartInterval = null;
+            document.body.style.backgroundColor = "#ffe6eb";
+            // លុបបេះដូងដែលកំពុងធ្លាក់ចោលទាំងអស់
+            const hearts = document.querySelectorAll('.heart');
+            hearts.forEach(heart => heart.remove());
+        }
+    </script>
+</body>
+</html>
